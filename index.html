@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bureau Fundament — Regie bij funderingsvraagstukken</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --grond-donker:#1c1a17;
+    --grond-donker-2:#242019;
+    --beton:#e9e4da;
+    --beton-licht:#f3f0ea;
+    --klei:#8b6f4e;
+    --code-groen:#4c7a5e;
+    --code-amber:#c98a2c;
+    --code-rood:#a83232;
+    --inkt:#2b2822;
+    --inkt-zacht:#54503f;
+    --wit:#fdfcf9;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'IBM Plex Sans', sans-serif;
+    color:var(--inkt);
+    background:var(--beton-licht);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:inherit;
+  }
+
+  .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  img,svg{display:block;max-width:100%;}
+
+  .wrap{
+    max-width:1040px;
+    margin:0 auto;
+    padding-left:24px;
+    padding-right:24px;
+  }
+
+  /* ---------- HERO ---------- */
+
+  .hero{
+    background:var(--grond-donker);
+    color:var(--beton-licht);
+    background-image:
+      linear-gradient(var(--grond-donker-2) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grond-donker-2) 1px, transparent 1px);
+    background-size:40px 40px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(28,26,23,0.2) 0%, var(--grond-donker) 78%);
+    pointer-events:none;
+  }
+
+  .hero-inner{
+    position:relative;
+    padding:56px 0 64px;
+  }
+
+  .brandbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-bottom:52px;
+  }
+
+  .brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:1.55rem;
+    letter-spacing:-0.01em;
+  }
+
+  .brand span{color:var(--code-amber);}
+
+  .brandbar .tel-mini{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+    color:var(--beton);
+    border:1px solid rgba(233,228,218,0.28);
+    border-radius:100px;
+    padding:8px 16px;
+    white-space:nowrap;
+  }
+
+  .eyebrow{
+    color:var(--code-amber);
+    margin-bottom:18px;
+  }
+
+  h1{
+    font-size:clamp(2.1rem, 5vw, 3.35rem);
+    line-height:1.12;
+    max-width:19ch;
+    margin-bottom:22px;
+  }
+
+  .hero p.lede{
+    font-size:1.08rem;
+    max-width:52ch;
+    color:var(--beton);
+    margin-bottom:34px;
+  }
+
+  .cta-row{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:56px;
+  }
+
+  .btn-call{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--code-amber);
+    color:var(--grond-donker);
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:1.05rem;
+    padding:16px 26px;
+    border-radius:6px;
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+
+  .btn-call:hover{background:#dd9a36; transform:translateY(-1px);}
+
+  .btn-call svg{width:19px;height:19px;flex-shrink:0;}
+
+  .btn-whatsapp{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    border:1px solid rgba(76,122,94,0.55);
+    color:var(--beton-licht);
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:1rem;
+    padding:15px 24px;
+    border-radius:6px;
+    transition:background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn-whatsapp:hover{background:rgba(76,122,94,0.14); border-color:var(--code-groen);}
+
+  .btn-whatsapp svg{width:18px;height:18px;flex-shrink:0;color:var(--code-groen);}
+
+  .cta-sub{
+    font-size:0.88rem;
+    color:var(--beton);
+    opacity:0.75;
+  }
+
+  .proof-strip{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:32px;
+    flex-wrap:wrap;
+  }
+
+  .proof-strip .label{color:var(--code-groen); flex-shrink:0;}
+
+  .proof-strip span.tekst{
+    font-size:0.9rem;
+    color:var(--beton);
+    opacity:0.85;
+  }
+
+  /* ---------- SCHAAL (signature element) ---------- */
+
+  .schaal{
+    border:1px solid rgba(233,228,218,0.16);
+    border-radius:10px;
+    padding:22px 24px 20px;
+    background:rgba(255,255,255,0.02);
+    max-width:640px;
+  }
+
+  .schaal-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:14px;
+  }
+
+  .schaal-top .label{color:var(--beton);opacity:0.65;}
+
+  .schaal-bar{
+    display:flex;
+    height:40px;
+    border-radius:6px;
+    overflow:hidden;
+    margin-bottom:10px;
+  }
+
+  .schaal-seg{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:0.95rem;
+    color:rgba(0,0,0,0.55);
+  }
+
+  .seg-a{background:#5c9074;}
+  .seg-b{background:#7a9a6f;}
+  .seg-c{background:var(--code-amber); color:rgba(0,0,0,0.6);}
+  .seg-d{background:#bd6435; color:var(--wit);}
+  .seg-e{background:var(--code-rood); color:var(--wit);}
+
+  .schaal-note{
+    display:flex;
+    justify-content:flex-end;
+  }
+
+  .schaal-note span{
+    font-size:0.82rem;
+    color:var(--beton);
+    opacity:0.8;
+    max-width:22ch;
+    text-align:right;
+    border-top:1px solid rgba(233,228,218,0.16);
+    padding-top:8px;
+  }
+
+  /* ---------- SECTIES ---------- */
+
+  section{padding:76px 0;}
+
+  .sectie-licht{background:var(--beton-licht);}
+  .sectie-beton{background:var(--beton);}
+
+  .kop-eyebrow{
+    color:var(--klei);
+    margin-bottom:14px;
+  }
+
+  h2{
+    font-size:clamp(1.55rem, 3.2vw, 2.15rem);
+    max-width:22ch;
+    margin-bottom:20px;
+  }
+
+  .intro-tekst{
+    font-size:1.02rem;
+    color:var(--inkt-zacht);
+    max-width:58ch;
+    margin-bottom:8px;
+  }
+
+  /* probleem */
+
+  .probleem-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:start;
+    margin-top:36px;
+  }
+
+  .probleem-tekst p{
+    color:var(--inkt-zacht);
+    margin-bottom:16px;
+    font-size:1rem;
+  }
+
+  .probleem-tekst strong{color:var(--inkt);}
+
+  .vastgelopen{
+    border-left:3px solid var(--code-rood);
+    padding-left:20px;
+  }
+
+  .vastgelopen .label{color:var(--code-rood); margin-bottom:8px; display:block;}
+
+  .vastgelopen p{font-size:1rem; color:var(--inkt);}
+
+  /* proces */
+
+  .proces-lijst{
+    margin-top:40px;
+    border-top:1px solid rgba(43,40,34,0.14);
+  }
+
+  .stap{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:24px;
+    padding:26px 0;
+    border-bottom:1px solid rgba(43,40,34,0.14);
+  }
+
+  .stap-nr{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.95rem;
+    color:var(--klei);
+    padding-top:2px;
+  }
+
+  .stap h3{
+    font-size:1.15rem;
+    margin-bottom:6px;
+  }
+
+  .stap p{
+    color:var(--inkt-zacht);
+    font-size:0.97rem;
+    max-width:60ch;
+  }
+
+  /* voor wie */
+
+  .doelgroep-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:rgba(43,40,34,0.14);
+    border:1px solid rgba(43,40,34,0.14);
+    margin-top:36px;
+  }
+
+  .doelgroep-card{
+    background:var(--beton-licht);
+    padding:28px 26px;
+  }
+
+  .doelgroep-card .label{color:var(--klei); margin-bottom:12px; display:block;}
+
+  .doelgroep-card h3{font-size:1.08rem; margin-bottom:10px;}
+
+  .doelgroep-card p{color:var(--inkt-zacht); font-size:0.93rem;}
+
+  /* onafhankelijk */
+
+  .onafhankelijk{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+
+  .puntenlijst{list-style:none;margin-top:22px;}
+
+  .puntenlijst li{
+    display:flex;
+    gap:14px;
+    padding:14px 0;
+    border-bottom:1px solid rgba(43,40,34,0.12);
+    font-size:0.97rem;
+    color:var(--inkt-zacht);
+  }
+
+  .puntenlijst li:first-child{padding-top:0;}
+
+  .puntenlijst .vinkje{
+    color:var(--code-groen);
+    font-family:'IBM Plex Mono', monospace;
+    flex-shrink:0;
+  }
+
+  .citaatblok{
+    background:var(--grond-donker);
+    color:var(--beton-licht);
+    padding:36px 32px;
+    border-radius:8px;
+  }
+
+  .citaatblok p{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.25rem;
+    line-height:1.35;
+    margin-bottom:16px;
+  }
+
+  .citaatblok .label{color:var(--code-amber);}
+
+  /* checklist (kwalificatie) */
+
+  .sectie-check{padding-top:64px; padding-bottom:64px;}
+
+  .check-kaart{
+    border:1px solid rgba(43,40,34,0.16);
+    border-radius:10px;
+    padding:36px 40px;
+    max-width:640px;
+    margin:0 auto;
+    text-align:center;
+    background:var(--wit);
+  }
+
+  .check-kop{
+    font-size:1.4rem;
+    margin-bottom:22px;
+  }
+
+  .check-lijst{
+    list-style:none;
+    display:inline-flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:26px;
+    text-align:left;
+  }
+
+  .check-lijst li{
+    font-size:1.03rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .check-actie{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:1.05rem;
+    margin-bottom:22px;
+    color:var(--inkt);
+  }
+
+  .check-kaart .cta-knoppen a{color:var(--inkt);}
+  .check-kaart .btn-call{color:var(--grond-donker);}
+  .check-kaart .btn-whatsapp{color:var(--inkt); border-color:rgba(76,122,94,0.7);}
+
+  /* korte waarom-rij */
+
+  .kort-lijst{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px 34px;
+    margin-top:30px;
+  }
+
+  .kort-item{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:1.03rem;
+  }
+
+  .kort-item .vink{color:var(--code-groen); flex-shrink:0;}
+
+  /* bio */
+
+  .bio-blok{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:44px;
+    align-items:start;
+    margin-top:34px;
+  }
+
+  .bio-naam h3{
+    font-size:1.35rem;
+    margin-bottom:6px;
+  }
+
+  .bio-naam .label{color:var(--klei);}
+
+  .bio-quote{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.18rem;
+    line-height:1.55;
+    color:var(--inkt);
+    border-left:3px solid var(--klei);
+    padding-left:26px;
+  }
+
+  @media (max-width: 780px){
+    .bio-blok{grid-template-columns:1fr; gap:18px;}
+    .check-kaart{padding:30px 24px;}
+  }
+
+  /* cta finaal */
+
+  .cta-finaal{
+    background:var(--grond-donker);
+    color:var(--beton-licht);
+    text-align:center;
+    padding:84px 0;
+  }
+
+  .cta-finaal .kop-eyebrow{color:var(--code-amber);}
+
+  .cta-finaal h2{
+    max-width:20ch;
+    margin:0 auto 18px;
+    color:var(--beton-licht);
+  }
+
+  .cta-finaal p.lede{
+    color:var(--beton);
+    max-width:46ch;
+    margin:0 auto 36px;
+  }
+
+  .cta-finaal .btn-call{
+    font-size:1.2rem;
+    padding:20px 34px;
+  }
+
+  .cta-finaal .btn-whatsapp{
+    font-size:1.05rem;
+    padding:19px 28px;
+  }
+
+  .cta-knoppen{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+
+  .bereikbaar{
+    margin-top:20px;
+    font-size:0.85rem;
+    color:var(--beton);
+    opacity:0.7;
+  }
+
+  /* footer */
+
+  footer{
+    background:var(--grond-donker-2);
+    color:var(--beton);
+    padding:28px 0;
+    font-size:0.82rem;
+    opacity:0.75;
+  }
+
+  footer .wrap{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  footer .wrap + .wrap{
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px solid rgba(233,228,218,0.12);
+  }
+
+  .footer-initiatief{
+    font-size:0.78rem;
+    opacity:0.85;
+  }
+
+  /* sticky mobiele call bar */
+
+  .sticky-call{
+    position:fixed;
+    left:0;right:0;bottom:0;
+    background:var(--grond-donker);
+    padding:10px 14px;
+    display:none;
+    align-items:stretch;
+    gap:8px;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    z-index:50;
+    transform:translateY(100%);
+    transition:transform 0.25s ease;
+  }
+
+  .sticky-call.tonen{transform:translateY(0);}
+
+  .sticky-call a{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:12px 10px;
+    border-radius:6px;
+    font-size:0.92rem;
+  }
+
+  .sticky-call .sticky-bel{background:var(--code-amber); color:var(--grond-donker);}
+
+  .sticky-call .sticky-wa{border:1px solid rgba(76,122,94,0.6); color:var(--beton-licht);}
+
+  .sticky-call svg{width:17px;height:17px;flex-shrink:0;}
+
+  @media (max-width: 780px){
+    .probleem-grid{grid-template-columns:1fr; gap:32px;}
+    .doelgroep-grid{grid-template-columns:1fr;}
+    .onafhankelijk{grid-template-columns:1fr; gap:32px;}
+    .schaal-seg{font-size:0.8rem;}
+    section{padding:56px 0;}
+    .sticky-call{display:flex;}
+    body{padding-bottom:64px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="brandbar">
+      <div class="brand">Bureau <span>Fundament</span></div>
+      <a class="tel-mini" href="tel:+31294779999">0294 - 779999</a>
+    </div>
+
+    <div class="eyebrow label">Onafhankelijke regie bij funderingsvraagstukken</div>
+    <h1>Funderingscode D of E?<br>Wij nemen de regie, zodat uw vastgoedtransactie niet vastloopt.</h1>
+    <p class="lede">Bent u makelaar of taxateur en heeft u een woning met funderingscode D of E? Dan begint het echte werk. Bureau Fundament neemt de regie over, zodat uw dossier én transactie niet vastlopen.</p>
+
+    <div class="cta-row">
+      <a class="btn-call" href="tel:+31294779999">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Bel voor advies
+      </a>
+      <a class="btn-whatsapp" href="https://wa.me/31611668880?text=Hallo%2C%20ik%20heb%20een%20vraag%20over%20een%20funderingsdossier" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        Appen kan ook
+      </a>
+    </div>
+
+    <div class="proof-strip">
+      <span class="label">Track record</span>
+      <span class="tekst">Meerdere succesvolle funderingsdossiers gerealiseerd &#8212; regio Abcoude</span>
+    </div>
+
+    <div class="schaal">
+      <div class="schaal-top">
+        <span class="label">Bouwkundige code, verplicht bij verkoop</span>
+      </div>
+      <div class="schaal-bar">
+        <div class="schaal-seg seg-a">A</div>
+        <div class="schaal-seg seg-b">B</div>
+        <div class="schaal-seg seg-c">C</div>
+        <div class="schaal-seg seg-d">D</div>
+        <div class="schaal-seg seg-e">E</div>
+      </div>
+      <div class="schaal-note">
+        <span>Bij D of E begint het traject &#8212; wij nemen het over, ongeacht waar het dossier nu staat.</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="sectie-check sectie-licht">
+  <div class="wrap">
+    <div class="check-kaart">
+      <h2 class="check-kop">Heeft u een woning met:</h2>
+      <ul class="check-lijst">
+        <li>&#9989; funderingscode D</li>
+        <li>&#9989; funderingscode E</li>
+        <li>&#9989; een KCAF QuickScan</li>
+        <li>&#9989; onzekerheid bij koper of bank</li>
+      </ul>
+      <p class="check-actie">Bel of app direct.</p>
+      <div class="cta-knoppen">
+        <a class="btn-call" href="tel:+31294779999">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          0294 - 779999
+        </a>
+        <a class="btn-whatsapp" href="https://wa.me/31611668880?text=Hallo%2C%20ik%20heb%20een%20vraag%20over%20een%20funderingsdossier" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie-beton">
+  <div class="wrap">
+    <h2>Waarom Bureau Fundament?</h2>
+    <div class="kort-lijst">
+      <div class="kort-item"><span class="vink">&#10004;</span> Onafhankelijk</div>
+      <div class="kort-item"><span class="vink">&#10004;</span> Geen belang bij herstel</div>
+      <div class="kort-item"><span class="vink">&#10004;</span> Eén aanspreekpunt</div>
+      <div class="kort-item"><span class="vink">&#10004;</span> Landelijk netwerk</div>
+      <div class="kort-item"><span class="vink">&#10004;</span> Snelle opvolging</div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie-licht">
+  <div class="wrap">
+    <div class="kop-eyebrow label">Het probleem</div>
+    <h2>Een slechte quickscan is het begin van een proces, niet het einde ervan.</h2>
+
+    <div class="probleem-grid">
+      <div class="probleem-tekst">
+        <p>De quickscan is bedoeld om risico in kaart te brengen &#8212; niet om een verkoop stil te leggen. Maar in de praktijk gebeurt precies dat. Een D of E&#8211;code roept vragen op bij de koper, twijfel bij de financier en onzekerheid bij de eigenaar.</p>
+        <p>Voor de makelaar is dit zelden het eigen vakgebied. <strong>Wie voert het vervolgonderzoek uit? Wat moet er in het dossier? En wie bewaakt dat het traject niet vastloopt terwijl de verkoop wacht?</strong></p>
+      </div>
+      <div class="vastgelopen">
+        <span class="label">Herkenbaar</span>
+        <p>Een dossier dat tussen makelaar, taxateur en eigenaar heen en weer gaat, zonder dat iemand de regie voert &#8212; en zonder dat er een onafhankelijke partij is die het funderingsvraagstuk daadwerkelijk beheerst.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie-beton">
+  <div class="wrap">
+    <div class="kop-eyebrow label">De regie</div>
+    <h2>Eén aanspreekpunt, van code tot contract.</h2>
+    <p class="intro-tekst">Bureau Fundament begeleidt het volledige traject na een slechte quickscan &#8212; onafhankelijk, en zonder eigen belang bij het herstel.</p>
+
+    <div class="proces-lijst">
+      <div class="stap">
+        <div class="stap-nr">01</div>
+        <div>
+          <h3>Risicoanalyse</h3>
+          <p>Wat blijkt precies uit de code, hoe urgent is het, en wat betekent dit voor het verkoop&#8211; of aankooptraject.</p>
+        </div>
+      </div>
+      <div class="stap">
+        <div class="stap-nr">02</div>
+        <div>
+          <h3>De juiste partijen</h3>
+          <p>Niet elk dossier vraagt om nieuw onderzoek &#8212; dat is vaak juist waar het vastloopt. Wij brengen de juiste specialisten in stelling. Jij hebt het probleem, wij regisseren de oplossing.</p>
+        </div>
+      </div>
+      <div class="stap">
+        <div class="stap-nr">03</div>
+        <div>
+          <h3>Funderingsdossier</h3>
+          <p>Eén compleet, overzichtelijk dossier &#8212; samengesteld uit de rapportages van de betrokken specialisten, bruikbaar voor koper, verkoper, taxateur en financier.</p>
+        </div>
+      </div>
+      <div class="stap">
+        <div class="stap-nr">04</div>
+        <div>
+          <h3>Verantwoorde transactie</h3>
+          <p>Verkoop of aankoop, met een dossier dat compleet en op orde is.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie-licht">
+  <div class="wrap">
+    <div class="kop-eyebrow label">Voor wie</div>
+    <h2>Bureau Fundament werkt voor iedereen aan tafel bij het dossier.</h2>
+
+    <div class="doelgroep-grid">
+      <div class="doelgroep-card">
+        <span class="label">Makelaars</span>
+        <h3>Vastgelopen na een quickscan</h3>
+        <p>Uw klant heeft een D of E&#8211;code en u weet niet welke vervolgstap nu logisch is. Wij nemen dat traject over, zodat u zich weer op de verkoop kunt richten.</p>
+      </div>
+      <div class="doelgroep-card">
+        <span class="label">Taxateurs</span>
+        <h3>Onderbouwing voor de taxatie</h3>
+        <p>Een taxatie op een woning met funderingsrisico vraagt om een dossier dat standhoudt. Wij zorgen dat dat er ligt, voordat u hoeft te rapporteren.</p>
+      </div>
+      <div class="doelgroep-card">
+        <span class="label">Woningeigenaren</span>
+        <h3>Weten waar u aan toe bent</h3>
+        <p>Voor eigenaren die vóór de verkoop willen weten wat de code betekent &#8212; en wat er wel en niet nodig is om verantwoord te verkopen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie-beton">
+  <div class="wrap">
+    <div class="onafhankelijk">
+      <div>
+        <div class="kop-eyebrow label">Waarom onafhankelijk</div>
+        <h2>Geen belang bij herstel. Wel belang bij een dossier dat klopt.</h2>
+        <ul class="puntenlijst">
+          <li><span class="vinkje">&#10003;</span> Geen belang bij een duurdere oplossing dan nodig.</li>
+          <li><span class="vinkje">&#10003;</span> Eén regisseur voor alle partijen aan het dossier &#8212; makelaar, taxateur, koper en verkoper.</li>
+          <li><span class="vinkje">&#10003;</span> Bureau Fundament voert zelf geen onderzoeken of herstel uit, maar heeft een groot netwerk van specialisten.</li>
+          <li><span class="vinkje">&#10003;</span> Meerdere succesvolle funderingsdossiers gerealiseerd in de regio Abcoude.</li>
+        </ul>
+      </div>
+      <div class="citaatblok">
+        <span class="label">Bureau Fundament</span>
+        <p>Regie bij complexe vastgoedvraagstukken. Wij nemen het funderingstraject over &#8212; zodat u weer verder kunt met de verkoop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie-licht">
+  <div class="wrap">
+    <div class="kop-eyebrow label">Over de oprichter</div>
+    <div class="bio-blok">
+      <div class="bio-naam">
+        <h3>Rogier Gerritsma</h3>
+        <span class="label">Oprichter Bureau Fundament</span>
+      </div>
+      <blockquote class="bio-quote">
+        &#8220;Na ruim 25 jaar ervaring in digitalisering en procesregie binnen grote organisaties richt ik mij op complexe vastgoedvraagstukken. Ik geloof dat funderingsproblematiek niet vraagt om nóg een rapport, maar om regie. Daarom begeleid ik makelaars, taxateurs en woningeigenaren van eerste risico tot compleet funderingsdossier.&#8221;
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="cta-finaal">
+  <div class="wrap">
+    <div class="kop-eyebrow label">Zit u vast met een dossier?</div>
+    <h2>Bel voor een vrijblijvend advies over uw funderingsvraagstuk.</h2>
+    <p class="lede">Binnen één gesprek weet u welke vervolgstap logisch is &#8212; en wie die voor u uit handen neemt.</p>
+    <div class="cta-knoppen">
+      <a class="btn-call" href="tel:+31294779999">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        0294 - 779999
+      </a>
+      <a class="btn-whatsapp" href="https://wa.me/31611668880?text=Hallo%2C%20ik%20heb%20een%20vraag%20over%20een%20funderingsdossier" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+    <div class="bereikbaar">Bel gerust. Vaak ook buiten kantooruren bereikbaar. &#8212; of mail naar <a href="mailto:mail@bureau-fundament.nl" style="text-decoration:underline;">mail@bureau-fundament.nl</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Bureau Fundament &#8212; Regie bij complexe vastgoedvraagstukken</span>
+    <span>Amsterdam</span>
+  </div>
+  <div class="wrap">
+    <span class="footer-initiatief">Een initiatief van Bureau Wonen en Bureau Gerritsma</span>
+  </div>
+</footer>
+
+<div class="sticky-call" id="stickyCall">
+  <a class="sticky-bel" href="tel:+31294779999">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Bel nu
+  </a>
+  <a class="sticky-wa" href="https://wa.me/31611668880?text=Hallo%2C%20ik%20heb%20een%20vraag%20over%20een%20funderingsdossier" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+<script>
+  var hero = document.querySelector('.hero');
+  var sticky = document.getElementById('stickyCall');
+  window.addEventListener('scroll', function(){
+    var heroBottom = hero.getBoundingClientRect().bottom;
+    if (heroBottom < 0) {
+      sticky.classList.add('tonen');
+    } else {
+      sticky.classList.remove('tonen');
+    }
+  }, { passive: true });
+</script>
+
+</body>
+</html>
