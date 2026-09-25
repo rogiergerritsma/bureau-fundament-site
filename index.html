@@ -3,7 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bureau Fundament — Regie bij funderingsvraagstukken</title>
+<title>Funderingscode D of E? Regie tot compleet funderingsdossier | Bureau Fundament</title>
+<meta name="description" content="Funderingscode D of E in het taxatierapport? Bureau Fundament regelt het Fase 0-onderzoek en een compleet funderingsdossier dat de bank accepteert, zodat uw verkoop of aankoop doorgaat.">
+<link rel="canonical" href="https://bureau-fundament.nl/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="Bureau Fundament">
+<meta property="og:title" content="Funderingscode D of E? Wij nemen de regie.">
+<meta property="og:description" content="Onafhankelijke regie na een slechte funderingsscore: Fase 0-onderzoek, compleet dossier, transactie overeind.">
+<meta property="og:url" content="https://bureau-fundament.nl/">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ProfessionalService",
+  "name":"Bureau Fundament",
+  "description":"Onafhankelijke regie bij funderingsvraagstukken na funderingscode D of E in het taxatierapport.",
+  "url":"https://bureau-fundament.nl/",
+  "telephone":"+31294779999",
+  "email":"mail@bureau-fundament.nl",
+  "areaServed":{"@type":"Country","name":"Nederland"},
+  "founder":{"@type":"Person","name":"Rogier Gerritsma"},
+  "knowsAbout":["funderingscode","funderingsrisico","Fase 0-funderingsonderzoek","KCAF","taxatierapport"]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
@@ -353,7 +375,7 @@
   }
 
   .doelgroep-card{
-    background:var(--beton-licht);
+    background:var(--wit);
     padding:28px 26px;
   }
 
@@ -554,6 +576,121 @@
     opacity:0.7;
   }
 
+  /* funderingscode uitgelegd */
+
+  .code-uitleg{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:10px;
+    margin-top:34px;
+  }
+
+  .code-cel{
+    background:var(--wit);
+    border:1px solid rgba(43,40,34,0.12);
+    border-radius:8px;
+    padding:0 0 16px;
+    overflow:hidden;
+  }
+
+  .code-cel .code-letter{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:1.4rem;
+    padding:10px 16px;
+    margin-bottom:12px;
+    color:rgba(0,0,0,0.6);
+  }
+
+  .code-cel.cd .code-letter, .code-cel.ce .code-letter{color:var(--wit);}
+  .code-cel.ca .code-letter{background:#5c9074;}
+  .code-cel.cb .code-letter{background:#7a9a6f;}
+  .code-cel.cc .code-letter{background:var(--code-amber);}
+  .code-cel.cd .code-letter{background:#bd6435;}
+  .code-cel.ce .code-letter{background:var(--code-rood);}
+
+  .code-cel p{
+    padding:0 16px;
+    font-size:0.9rem;
+    color:var(--inkt-zacht);
+  }
+
+  .code-cel p strong{color:var(--inkt); display:block; margin-bottom:4px;}
+
+  .uitleg-kolommen{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    margin-top:40px;
+  }
+
+  .uitleg-kolommen h3{font-size:1.12rem; margin-bottom:10px;}
+
+  .uitleg-kolommen p{
+    color:var(--inkt-zacht);
+    font-size:0.98rem;
+    margin-bottom:14px;
+    max-width:58ch;
+  }
+
+  .uitleg-kolommen p strong{color:var(--inkt);}
+
+  /* faq */
+
+  .faq-lijst{
+    margin-top:32px;
+    border-top:1px solid rgba(43,40,34,0.14);
+    max-width:760px;
+  }
+
+  .faq-lijst details{
+    border-bottom:1px solid rgba(43,40,34,0.14);
+  }
+
+  .faq-lijst summary{
+    list-style:none;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    padding:20px 0;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:1.06rem;
+  }
+
+  .faq-lijst summary::-webkit-details-marker{display:none;}
+
+  .faq-lijst summary::after{
+    content:"+";
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--klei);
+    font-size:1.2rem;
+    flex-shrink:0;
+  }
+
+  .faq-lijst details[open] summary::after{content:"\2212";}
+
+  .faq-lijst summary:focus-visible{outline:2px solid var(--code-amber); outline-offset:4px;}
+
+  .faq-lijst .faq-antwoord{
+    padding:0 0 22px;
+    color:var(--inkt-zacht);
+    font-size:0.98rem;
+    max-width:64ch;
+  }
+
+  .faq-lijst .faq-antwoord p + p{margin-top:10px;}
+
+  @media (max-width: 780px){
+    .code-uitleg{grid-template-columns:1fr;}
+    .code-cel{display:grid; grid-template-columns:56px 1fr; align-items:center; padding:0;}
+    .code-cel .code-letter{margin:0; height:100%; display:flex; align-items:center; justify-content:center;}
+    .code-cel p{padding:12px 16px;}
+    .uitleg-kolommen{grid-template-columns:1fr; gap:24px;}
+  }
+
   /* footer */
 
   footer{
@@ -639,6 +776,102 @@
     body{padding-bottom:64px;}
   }
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Wat is funderingscode D of E?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sinds 1 april 2026 bevat elk taxatierapport een funderingsrisicoscore van A tot en met E, gebaseerd op een online check bij het KCAF en de waarneming van de taxateur. D staat voor verhoogd risico, E voor hoog risico. Bij beide codes vraagt de geldverstrekker vrijwel altijd om aanvullend onderzoek."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Betekent een D- of E-score dat mijn fundering slecht is?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Nee. De score is een risico-inschatting op basis van gegevens over de omgeving, de bodem en de bouwperiode, niet een inspectie van uw woning. Een hoge score betekent dat er meer informatie nodig is om de waarde goed vast te stellen. Pas aanvullend onderzoek laat zien hoe het er werkelijk voor staat."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Wat is een Fase 0-funderingsonderzoek?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Een Fase 0-onderzoek, ook wel Quickscan genoemd, is een eerste funderingsrisico-onderzoek door een gespecialiseerd bureau. Het brengt de risico’s voor een specifieke woning in kaart op basis van onder meer archiefonderzoek, bouwwijze en omgevingsgegevens. De uitkomst wordt door de taxateur meegenomen in het taxatierapport."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Welk onderzoeksbureau accepteert de bank?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Geldverstrekkers eisen dat het aanvullende onderzoek wordt uitgevoerd door een bureau dat is aangesloten bij NAFO (Nationale Alliantie Funderingsonderzoek) of KCAF. Bureau Fundament zorgt dat het onderzoek bij een geschikte partij terechtkomt en dat het rapport aansluit op wat de taxateur en de bank nodig hebben."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is er altijd nieuw onderzoek nodig?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Niet altijd. Soms is er al onderzoek gedaan aan de woning of het bouwblok, of is er in de straat al hersteld. Wij brengen eerst in kaart wat er al ligt. Zo voorkomt u dubbel werk, onnodige kosten en vertraging."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Kan de bank de hypotheek weigeren bij code D of E?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Een hoog of verhoogd funderingsrisico kan de marktwaarde en daarmee de maximale hypotheek verlagen. Bij ernstige risico’s kan een geldverstrekker de aanvraag weigeren. Een compleet funderingsdossier maakt het verschil tussen onzekerheid en een onderbouwde beslissing."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Ik ben koper. Hoe bescherm ik mij?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Bespreek met uw aankoopmakelaar een ontbindende voorwaarde voor funderingsproblemen of voor financiering. Zo kunt u de koop ontbinden als het onderzoek tegenvalt of als de financiering niet rond komt. Wij helpen het onderzoek binnen die termijn af te ronden."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Ik verkoop een oudere woning. Wat kan ik vooraf doen?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Steeds meer verkopers voegen een funderingsonderzoek al vooraf toe aan de verkoopdocumenten. Dat voorkomt verrassingen bij de taxatie van de koper, discussie tijdens de onderhandeling en vertraging richting de notaris. Wij adviseren wat in uw situatie verstandig is."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Wie betaalt het funderingsonderzoek?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Dat is een afspraak tussen koper en verkoper. Vaak laat de verkoper vooraf onderzoek doen om de verkoop soepel te laten verlopen, of betaalt de koper het als onderdeel van de eigen financiering. Wij kunnen meedenken over een verdeling die de deal overeind houdt."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Wat doet Bureau Fundament precies?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Wij nemen de regie over het funderingstraject: risicoanalyse, de juiste specialisten inschakelen, het bewaken van termijnen en het samenstellen van één compleet funderingsdossier voor koper, verkoper, taxateur en financier. Wij voeren zelf geen onderzoek of herstel uit en hebben dus geen belang bij een duurdere oplossing dan nodig."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Werken jullie alleen in de regio Abcoude?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Nee. Wij hebben meerdere funderingsdossiers afgerond in de regio Abcoude, maar werken landelijk met een netwerk van specialisten."
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 
@@ -651,7 +884,7 @@
 
     <div class="eyebrow label">Onafhankelijke regie bij funderingsvraagstukken</div>
     <h1>Funderingscode D of E?<br>Wij nemen de regie, zodat uw vastgoedtransactie niet vastloopt.</h1>
-    <p class="lede">Sinds 1 april 2026 is de funderingsrisicoscore verplicht onderdeel van elk taxatierapport. Bij code D of E rondt de taxateur pas af na aanvullend onderzoek &#8212; en begint voor u het echte werk. Bureau Fundament neemt de regie over, zodat uw dossier én transactie niet vastlopen.</p>
+    <p class="lede">Sinds 1 april 2026 is de funderingsrisicoscore verplicht onderdeel van elk taxatierapport. Bij code D of E vraagt de geldverstrekker vrijwel altijd om aanvullend onderzoek, zoals een Fase 0-funderingsonderzoek &#8212; en begint voor u het echte werk. Bureau Fundament neemt de regie over, zodat uw dossier én transactie niet vastlopen.</p>
 
     <div class="cta-row">
       <a class="btn-call" href="tel:+31294779999">
@@ -694,7 +927,7 @@
       <ul class="check-lijst">
         <li>&#9989; funderingscode D</li>
         <li>&#9989; funderingscode E</li>
-        <li>&#9989; een KCAF QuickScan</li>
+        <li>&#9989; een Fase 0-onderzoek of Quickscan met vragen</li>
         <li>&#9989; onzekerheid bij koper of bank</li>
       </ul>
       <p class="check-actie">Bel of app direct.</p>
@@ -725,7 +958,36 @@
   </div>
 </section>
 
-<section class="sectie-licht">
+<section class="sectie-licht" id="funderingscode">
+  <div class="wrap">
+    <div class="kop-eyebrow label">De funderingscode uitgelegd</div>
+    <h2>Wat betekent funderingscode D of E in het taxatierapport?</h2>
+    <p class="intro-tekst">Sinds 1 april 2026 doet de taxateur bij elke woningtaxatie een online check op funderingsrisico bij het KCAF (Kennis Centrum Aanpak Funderingsproblematiek). Op basis daarvan, aangevuld met eigen waarneming, krijgt de woning een score van A tot en met E.</p>
+
+    <div class="code-uitleg">
+      <div class="code-cel ca"><div class="code-letter">A</div><p><strong>Zeer laag risico</strong>Geen aanvullende actie nodig.</p></div>
+      <div class="code-cel cb"><div class="code-letter">B</div><p><strong>Laag risico</strong>In de regel geen gevolgen voor taxatie of financiering.</p></div>
+      <div class="code-cel cc"><div class="code-letter">C</div><p><strong>Verhoogde aandacht</strong>Signaal om alert te zijn, meestal nog zonder vervolgeis.</p></div>
+      <div class="code-cel cd"><div class="code-letter">D</div><p><strong>Verhoogd risico</strong>De geldverstrekker vraagt vrijwel altijd om aanvullend onderzoek.</p></div>
+      <div class="code-cel ce"><div class="code-letter">E</div><p><strong>Hoog risico</strong>Aanvullend onderzoek nodig; waarde en financiering kunnen onder druk komen.</p></div>
+    </div>
+
+    <div class="uitleg-kolommen">
+      <div>
+        <h3>Een D of E is een signaal, geen oordeel</h3>
+        <p>De score is een modelmatige inschatting op basis van kaarten, bodemgegevens, bouwjaar en informatie uit de omgeving. <strong>Een hoge score betekent niet automatisch dat er iets mis is met uw fundering.</strong> Het betekent dat de taxateur en de bank meer informatie nodig hebben om de marktwaarde vast te stellen.</p>
+        <p>In de praktijk is de indeling nog vrij grof: woningen vallen vaak in A, B of C, of direct in D of E. Juist daarom loont het om goed te kijken wat er al bekend is &#8212; eerdere onderzoeken, herstel in de straat, de bouwwijze &#8212; voordat er blind een nieuw rapport wordt besteld.</p>
+      </div>
+      <div id="fase-0">
+        <h3>Wat de bank wil zien: het Fase 0-onderzoek</h3>
+        <p>Bij code D of E eisen geldverstrekkers bijna altijd aanvullend onderzoek, een zogeheten <strong>Fase 0-funderingsrisico-onderzoek</strong> of Quickscan. Dat onderzoek moet worden uitgevoerd door een bureau dat is aangesloten bij NAFO (Nationale Alliantie Funderingsonderzoek) of KCAF. De taxateur verwerkt de uitkomst in het taxatierapport.</p>
+        <p>Hier lopen dossiers vast: welk bureau, welk type onderzoek, hoe snel, en is het resultaat bruikbaar voor déze bank? <strong>Bureau Fundament zorgt dat het juiste onderzoek door de juiste partij wordt gedaan &#8212; en dat het in één keer goed is.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie-beton">
   <div class="wrap">
     <div class="kop-eyebrow label">Het probleem</div>
     <h2>Een slechte quickscan is het begin van een proces, niet het einde ervan.</h2>
@@ -743,7 +1005,7 @@
   </div>
 </section>
 
-<section class="sectie-beton">
+<section class="sectie-licht">
   <div class="wrap">
     <div class="kop-eyebrow label">De regie</div>
     <h2>Eén aanspreekpunt, van code tot contract.</h2>
@@ -782,7 +1044,7 @@
   </div>
 </section>
 
-<section class="sectie-licht">
+<section class="sectie-beton">
   <div class="wrap">
     <div class="kop-eyebrow label">Voor wie</div>
     <h2>Bureau Fundament werkt voor iedereen aan tafel bij het dossier.</h2>
@@ -807,7 +1069,7 @@
   </div>
 </section>
 
-<section class="sectie-beton">
+<section class="sectie-licht">
   <div class="wrap">
     <div class="onafhankelijk">
       <div>
@@ -817,6 +1079,7 @@
           <li><span class="vinkje">&#10003;</span> Geen belang bij een duurdere oplossing dan nodig.</li>
           <li><span class="vinkje">&#10003;</span> Eén regisseur voor alle partijen aan het dossier &#8212; makelaar, taxateur, koper en verkoper.</li>
           <li><span class="vinkje">&#10003;</span> Bureau Fundament voert zelf geen onderzoeken of herstel uit, maar heeft een groot netwerk van specialisten.</li>
+          <li><span class="vinkje">&#10003;</span> Wij schakelen onderzoeksbureaus in die zijn aangesloten bij NAFO of KCAF, zodat het rapport door de geldverstrekker wordt geaccepteerd.</li>
           <li><span class="vinkje">&#10003;</span> Meerdere succesvolle funderingsdossiers gerealiseerd in de regio Abcoude.</li>
         </ul>
       </div>
@@ -828,7 +1091,7 @@
   </div>
 </section>
 
-<section class="sectie-licht">
+<section class="sectie-beton">
   <div class="wrap">
     <div class="kop-eyebrow label">Over de oprichter</div>
     <div class="bio-blok">
@@ -843,7 +1106,7 @@
   </div>
 </section>
 
-<section class="sectie-beton">
+<section class="sectie-licht">
   <div class="wrap">
     <div class="kop-eyebrow label">Voor de makelaar</div>
     <h2>Wanneer schakelt u ons in?</h2>
@@ -853,6 +1116,59 @@
       <li><span class="vinkje">&#10003;</span> Preventief, vóór verkoop, om verrassingen bij de taxatie te voorkomen.</li>
       <li><span class="vinkje">&#10003;</span> Zodra de taxateur een D&#8211; of E&#8211;score afgeeft en het dossier vastloopt.</li>
     </ul>
+  </div>
+</section>
+
+<section class="sectie-beton" id="veelgestelde-vragen">
+  <div class="wrap">
+    <div class="kop-eyebrow label">Veelgestelde vragen</div>
+    <h2>Vragen over funderingscode D, E en het Fase 0-onderzoek</h2>
+    <div class="faq-lijst">
+      <details>
+        <summary>Wat is funderingscode D of E?</summary>
+        <div class="faq-antwoord"><p>Sinds 1 april 2026 bevat elk taxatierapport een funderingsrisicoscore van A tot en met E, gebaseerd op een online check bij het KCAF en de waarneming van de taxateur. D staat voor verhoogd risico, E voor hoog risico. Bij beide codes vraagt de geldverstrekker vrijwel altijd om aanvullend onderzoek.</p></div>
+      </details>
+      <details>
+        <summary>Betekent een D- of E-score dat mijn fundering slecht is?</summary>
+        <div class="faq-antwoord"><p>Nee. De score is een risico-inschatting op basis van gegevens over de omgeving, de bodem en de bouwperiode, niet een inspectie van uw woning. Een hoge score betekent dat er meer informatie nodig is om de waarde goed vast te stellen. Pas aanvullend onderzoek laat zien hoe het er werkelijk voor staat.</p></div>
+      </details>
+      <details>
+        <summary>Wat is een Fase 0-funderingsonderzoek?</summary>
+        <div class="faq-antwoord"><p>Een Fase 0-onderzoek, ook wel Quickscan genoemd, is een eerste funderingsrisico-onderzoek door een gespecialiseerd bureau. Het brengt de risico&#8217;s voor een specifieke woning in kaart op basis van onder meer archiefonderzoek, bouwwijze en omgevingsgegevens. De uitkomst wordt door de taxateur meegenomen in het taxatierapport.</p></div>
+      </details>
+      <details>
+        <summary>Welk onderzoeksbureau accepteert de bank?</summary>
+        <div class="faq-antwoord"><p>Geldverstrekkers eisen dat het aanvullende onderzoek wordt uitgevoerd door een bureau dat is aangesloten bij NAFO (Nationale Alliantie Funderingsonderzoek) of KCAF. Bureau Fundament zorgt dat het onderzoek bij een geschikte partij terechtkomt en dat het rapport aansluit op wat de taxateur en de bank nodig hebben.</p></div>
+      </details>
+      <details>
+        <summary>Is er altijd nieuw onderzoek nodig?</summary>
+        <div class="faq-antwoord"><p>Niet altijd. Soms is er al onderzoek gedaan aan de woning of het bouwblok, of is er in de straat al hersteld. Wij brengen eerst in kaart wat er al ligt. Zo voorkomt u dubbel werk, onnodige kosten en vertraging.</p></div>
+      </details>
+      <details>
+        <summary>Kan de bank de hypotheek weigeren bij code D of E?</summary>
+        <div class="faq-antwoord"><p>Een hoog of verhoogd funderingsrisico kan de marktwaarde en daarmee de maximale hypotheek verlagen. Bij ernstige risico&#8217;s kan een geldverstrekker de aanvraag weigeren. Een compleet funderingsdossier maakt het verschil tussen onzekerheid en een onderbouwde beslissing.</p></div>
+      </details>
+      <details>
+        <summary>Ik ben koper. Hoe bescherm ik mij?</summary>
+        <div class="faq-antwoord"><p>Bespreek met uw aankoopmakelaar een ontbindende voorwaarde voor funderingsproblemen of voor financiering. Zo kunt u de koop ontbinden als het onderzoek tegenvalt of als de financiering niet rond komt. Wij helpen het onderzoek binnen die termijn af te ronden.</p></div>
+      </details>
+      <details>
+        <summary>Ik verkoop een oudere woning. Wat kan ik vooraf doen?</summary>
+        <div class="faq-antwoord"><p>Steeds meer verkopers voegen een funderingsonderzoek al vooraf toe aan de verkoopdocumenten. Dat voorkomt verrassingen bij de taxatie van de koper, discussie tijdens de onderhandeling en vertraging richting de notaris. Wij adviseren wat in uw situatie verstandig is.</p></div>
+      </details>
+      <details>
+        <summary>Wie betaalt het funderingsonderzoek?</summary>
+        <div class="faq-antwoord"><p>Dat is een afspraak tussen koper en verkoper. Vaak laat de verkoper vooraf onderzoek doen om de verkoop soepel te laten verlopen, of betaalt de koper het als onderdeel van de eigen financiering. Wij kunnen meedenken over een verdeling die de deal overeind houdt.</p></div>
+      </details>
+      <details>
+        <summary>Wat doet Bureau Fundament precies?</summary>
+        <div class="faq-antwoord"><p>Wij nemen de regie over het funderingstraject: risicoanalyse, de juiste specialisten inschakelen, het bewaken van termijnen en het samenstellen van één compleet funderingsdossier voor koper, verkoper, taxateur en financier. Wij voeren zelf geen onderzoek of herstel uit en hebben dus geen belang bij een duurdere oplossing dan nodig.</p></div>
+      </details>
+      <details>
+        <summary>Werken jullie alleen in de regio Abcoude?</summary>
+        <div class="faq-antwoord"><p>Nee. Wij hebben meerdere funderingsdossiers afgerond in de regio Abcoude, maar werken landelijk met een netwerk van specialisten.</p></div>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -907,6 +1223,22 @@
       sticky.classList.remove('tonen');
     }
   }, { passive: true });
+
+  /* Conversiemeting voor Google Ads / GA4: bel- en WhatsApp-klikken */
+  window.dataLayer = window.dataLayer || [];
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var type = href.indexOf('tel:') === 0 ? 'bel_klik'
+             : href.indexOf('wa.me') > -1 ? 'whatsapp_klik'
+             : href.indexOf('mailto:') === 0 ? 'mail_klik' : null;
+    if (!type) return;
+    var plek = a.closest('section, header, .sticky-call');
+    var detail = { event: type, link_plek: plek ? (plek.id || plek.className.split(' ')[0]) : 'onbekend' };
+    window.dataLayer.push(detail);
+    if (typeof window.gtag === 'function') { window.gtag('event', type, { link_plek: detail.link_plek }); }
+  });
 </script>
 
 </body>
