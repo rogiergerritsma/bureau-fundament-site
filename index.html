@@ -345,7 +345,7 @@
 
   .doelgroep-grid{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:repeat(2, 1fr);
     gap:1px;
     background:rgba(43,40,34,0.14);
     border:1px solid rgba(43,40,34,0.14);
@@ -362,6 +362,14 @@
   .doelgroep-card h3{font-size:1.08rem; margin-bottom:10px;}
 
   .doelgroep-card p{color:var(--inkt-zacht); font-size:0.93rem;}
+
+  /* preventief */
+
+  .sectie-preventief{background:var(--grond-donker); color:var(--beton-licht);}
+  .sectie-preventief .kop-eyebrow{color:var(--code-amber);}
+  .sectie-preventief .intro-tekst{color:var(--beton);}
+  .sectie-preventief .puntenlijst li{color:var(--beton); border-bottom-color:rgba(233,228,218,0.14);}
+  .sectie-preventief .cta-knoppen{justify-content:flex-start; margin-top:30px;}
 
   /* onafhankelijk */
 
@@ -650,8 +658,8 @@
     </div>
 
     <div class="eyebrow label">Onafhankelijke regie bij funderingsvraagstukken</div>
-    <h1>Funderingscode D of E?<br>Wij nemen de regie, zodat uw vastgoedtransactie niet vastloopt.</h1>
-    <p class="lede">Sinds 1 april 2026 is de funderingsrisicoscore standaard onderdeel van het gevalideerde taxatierapport &#8212; en steeds vaker al eerder in beeld. Bij code D of E moet de taxateur onderbouwen of aanvullend onderzoek nodig is, en begint voor u het echte werk. Bureau Fundament neemt de regie over, zodat uw dossier én transactie niet vastlopen.</p>
+    <h1>Funderingscode D of E?<br>Wij nemen de regie, zodat uw vastgoedtransactie niet vastloopt</h1>
+    <p class="lede">Van eerste risico-inschatting tot compleet funderingsdossier. Sinds 1 april 2026 is de funderingsrisicoscore standaard onderdeel van het gevalideerde taxatierapport. Bij code D of E moet de taxateur onderbouwen of aanvullend onderzoek nodig is. Bureau Fundament bouwt het dossier waarmee uw transactie verder kan &#8212; en zorgt dat iedereen weet wat er moet gebeuren, en wanneer.</p>
 
     <div class="cta-row">
       <a class="btn-call" href="tel:+31294779999">
@@ -694,8 +702,9 @@
       <ul class="check-lijst">
         <li>&#9989; funderingscode D</li>
         <li>&#9989; funderingscode E</li>
-        <li>&#9989; een KCAF QuickScan</li>
+        <li>&#9989; een QuickScan-uitslag die vragen oproept</li>
         <li>&#9989; onzekerheid bij koper of bank</li>
+        <li>&#9989; een verkoop in een funderingsrisicogebied</li>
       </ul>
       <p class="check-actie">Bel of app direct.</p>
       <div class="cta-knoppen">
@@ -719,7 +728,7 @@
       <div class="kort-item"><span class="vink">&#10004;</span> Onafhankelijk</div>
       <div class="kort-item"><span class="vink">&#10004;</span> Geen belang bij herstel</div>
       <div class="kort-item"><span class="vink">&#10004;</span> Eén aanspreekpunt</div>
-      <div class="kort-item"><span class="vink">&#10004;</span> Landelijk netwerk</div>
+      <div class="kort-item"><span class="vink">&#10004;</span> Onafhankelijk netwerk van specialisten</div>
       <div class="kort-item"><span class="vink">&#10004;</span> Snelle opvolging</div>
     </div>
   </div>
@@ -728,12 +737,13 @@
 <section class="sectie-licht">
   <div class="wrap">
     <div class="kop-eyebrow label">Het probleem</div>
-    <h2>Een ongunstige funderingsscore is geen eindpunt, maar een startpunt.</h2>
+    <h2>Code D of E? Dan begint het traject pas</h2>
 
     <div class="probleem-grid">
       <div class="probleem-tekst">
-        <p>De quickscan is bedoeld om risico in kaart te brengen &#8212; niet om een verkoop stil te leggen. Maar in de praktijk gebeurt precies dat. Sinds de funderingsscore standaard in het taxatierapport staat, komt dit bij vrijwel elke transactie met een ouder pand op tafel &#8212; steeds vaker al in het voortraject, maar ook nog regelmatig pas nadat koper en verkoper het al eens zijn.</p>
-        <p>Voor de makelaar is dit zelden het eigen vakgebied, terwijl het risico wél voor uw rekening komt: een hypotheekverstrekker kan de financiering weigeren of verlagen, zeker zonder financieringsvoorbehoud. <strong>Wie voert het vervolgonderzoek uit? Wat moet er in het dossier? En wie bewaakt dat de deal niet alsnog klapt terwijl de klok tikt?</strong></p>
+        <p>De funderingsscore is bedoeld om risico in kaart te brengen &#8212; niet om een verkoop stil te leggen. Maar in de praktijk gebeurt dat wel. Sinds 1 april 2026 is funderingsrisico een vast onderdeel van het taxatierapport. Daardoor komt funderingsinformatie bij steeds meer aan- en verkooptrajecten nadrukkelijk op tafel &#8212; steeds vaker al in het voortraject, maar ook nog regelmatig pas nadat koper en verkoper het al eens zijn.</p>
+        <p>Een D of E betekent niet automatisch nieuw onderzoek. Eerst de vraag: welke informatie is er al, en is die voldoende? Pas daarna volgt, als het nodig is, aanvullend onderzoek.</p>
+        <p>Voor de makelaar is dit zelden het eigen vakgebied, terwijl het risico wél voor uw rekening komt: een hypotheekverstrekker kan de financiering weigeren of verlagen, zeker zonder financieringsvoorbehoud. <strong>Wie bepaalt de vervolgstap? Wat moet er in het dossier? En wie bewaakt dat de deal niet alsnog klapt terwijl de klok tikt?</strong></p>
       </div>
       <div class="vastgelopen">
         <span class="label">Herkenbaar</span>
@@ -746,38 +756,64 @@
 <section class="sectie-beton">
   <div class="wrap">
     <div class="kop-eyebrow label">De regie</div>
-    <h2>Eén aanspreekpunt, van code tot contract.</h2>
-    <p class="intro-tekst">Bureau Fundament begeleidt het volledige traject na een ongunstige funderingsscore &#8212; onafhankelijk, en zonder eigen belang bij het herstel.</p>
+    <h2>Wij bouwen het dossier waarmee uw transactie verder kan</h2>
+    <p class="intro-tekst">Bureau Fundament voert zelf geen onderzoek of herstel uit. Wij organiseren de informatieketen: van risicoscore tot een compleet funderingsdossier voor taxateur, financier, koper en verkoper.</p>
 
     <div class="proces-lijst">
       <div class="stap">
         <div class="stap-nr">01</div>
         <div>
-          <h3>Risicoanalyse</h3>
-          <p>Wat blijkt precies uit de code, hoe urgent is het, en wat betekent dit voor het verkoop&#8211; of aankooptraject.</p>
+          <h3>Dossieranalyse</h3>
+          <p>Wat staat er in het funderingsrisicorapport, welke informatie is er al &#8212; archief, eerdere onderzoeken, uitgevoerd herstel &#8212; en wat betekent dit voor het verkoop- of aankooptraject?</p>
         </div>
       </div>
       <div class="stap">
         <div class="stap-nr">02</div>
         <div>
-          <h3>De juiste partijen</h3>
-          <p>Niet elk dossier vraagt om nieuw onderzoek &#8212; dat is vaak juist waar het vastloopt. Wij brengen de juiste specialisten in stelling. Jij hebt het probleem, wij regisseren de oplossing.</p>
+          <h3>Vervolgstap bepalen</h3>
+          <p>Is de bestaande informatie voldoende, of is aanvullend onderzoek nodig? Niet elk dossier vraagt om nieuw onderzoek &#8212; en juist daar loopt het vaak vast.</p>
         </div>
       </div>
       <div class="stap">
         <div class="stap-nr">03</div>
         <div>
-          <h3>Funderingsdossier</h3>
-          <p>Eén compleet, overzichtelijk dossier &#8212; samengesteld uit de rapportages van de betrokken specialisten, bruikbaar voor koper, verkoper, taxateur en financier.</p>
+          <h3>Specialist inschakelen en begeleiden</h3>
+          <p>Wij schakelen de juiste onafhankelijke deskundige in en bewaken opdracht, planning en oplevering.</p>
         </div>
       </div>
       <div class="stap">
         <div class="stap-nr">04</div>
         <div>
-          <h3>Verantwoorde transactie</h3>
-          <p>Verkoop of aankoop, met een dossier dat compleet en op orde is.</p>
+          <h3>Funderingsdossier samenstellen</h3>
+          <p>Alle relevante informatie in één helder dossier &#8212; bruikbaar voor koper, verkoper, taxateur en financier.</p>
         </div>
       </div>
+      <div class="stap">
+        <div class="stap-nr">05</div>
+        <div>
+          <h3>Afstemming tot aan de transactie</h3>
+          <p>Makelaar, taxateur, eigenaar, koper en hypotheekadviseur weten waar ze aan toe zijn, zodat de transactie verder kan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie-preventief">
+  <div class="wrap">
+    <div class="kop-eyebrow label">Vóór de verkoop</div>
+    <h2>Funderingscheck vóór verkoop</h2>
+    <p class="intro-tekst">Voorkom dat het funderingsvraagstuk pas begint nadat de koopovereenkomst is getekend.</p>
+    <ul class="puntenlijst">
+      <li><span class="vinkje">&#10003;</span> Wij beoordelen de funderingsinformatie voordat de woning online komt.</li>
+      <li><span class="vinkje">&#10003;</span> Is aanvullend onderzoek nodig, dan regelen we dat ruim vóór de eerste bezichtiging.</li>
+      <li><span class="vinkje">&#10003;</span> U start de verkoop met een dossier dat klaarligt voor koper, taxateur en financier.</li>
+    </ul>
+    <div class="cta-knoppen">
+      <a class="btn-call" href="tel:+31294779999">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Check aanvragen
+      </a>
     </div>
   </div>
 </section>
@@ -785,7 +821,7 @@
 <section class="sectie-licht">
   <div class="wrap">
     <div class="kop-eyebrow label">Voor wie</div>
-    <h2>Bureau Fundament werkt voor iedereen aan tafel bij het dossier.</h2>
+    <h2>Bureau Fundament werkt voor iedereen aan tafel bij het dossier</h2>
 
     <div class="doelgroep-grid">
       <div class="doelgroep-card">
@@ -796,7 +832,12 @@
       <div class="doelgroep-card">
         <span class="label">Taxateurs</span>
         <h3>Onderbouwing voor de taxatie</h3>
-        <p>Een taxatie op een woning met funderingsrisico vraagt om een dossier dat standhoudt. Wij zorgen dat dat er ligt, voordat u hoeft te rapporteren.</p>
+        <p>Een dossier dat aanvullende onderbouwing vraagt? Wij organiseren het vervolg, zodat de informatie er ligt voordat u rapporteert.</p>
+      </div>
+      <div class="doelgroep-card">
+        <span class="label">Hypotheekadviseurs</span>
+        <h3>Financiering met funderingsrisico</h3>
+        <p>Speelt de funderingsscore een rol in het financieringsdossier? Wij brengen de informatie bijeen die de geldverstrekker nodig heeft om het dossier te beoordelen.</p>
       </div>
       <div class="doelgroep-card">
         <span class="label">Woningeigenaren</span>
@@ -812,17 +853,18 @@
     <div class="onafhankelijk">
       <div>
         <div class="kop-eyebrow label">Waarom onafhankelijk</div>
-        <h2>Geen belang bij herstel. Wel belang bij een dossier dat klopt.</h2>
+        <h2>Geen belang bij herstel, wel bij een dossier dat klopt</h2>
         <ul class="puntenlijst">
           <li><span class="vinkje">&#10003;</span> Geen belang bij een duurdere oplossing dan nodig.</li>
-          <li><span class="vinkje">&#10003;</span> Eén regisseur voor alle partijen aan het dossier &#8212; makelaar, taxateur, koper en verkoper.</li>
-          <li><span class="vinkje">&#10003;</span> Bureau Fundament voert zelf geen onderzoeken of herstel uit, maar heeft een groot netwerk van specialisten.</li>
+          <li><span class="vinkje">&#10003;</span> Eén regisseur voor alle partijen aan het dossier &#8212; makelaar, taxateur, hypotheekadviseur, koper en verkoper.</li>
+          <li><span class="vinkje">&#10003;</span> Bureau Fundament voert zelf geen funderingsonderzoek of herstel uit. Daardoor hebben wij geen financieel belang bij de uitkomst van het onderzoek of de gekozen oplossing.</li>
+          <li><span class="vinkje">&#10003;</span> Een onafhankelijk netwerk van constructeurs, funderingsspecialisten en onderzoeksbureaus.</li>
           <li><span class="vinkje">&#10003;</span> Meerdere succesvolle funderingsdossiers gerealiseerd in de regio Abcoude.</li>
         </ul>
       </div>
       <div class="citaatblok">
         <span class="label">Bureau Fundament</span>
-        <p>Regie bij complexe vastgoedvraagstukken. Wij nemen het funderingstraject over &#8212; zodat u weer verder kunt met de verkoop.</p>
+        <p>Wij verkopen geen funderingsonderzoek. Wij bouwen het funderingsdossier waarmee een vastgoedtransactie verder kan.</p>
       </div>
     </div>
   </div>
@@ -837,7 +879,7 @@
         <span class="label">Oprichter Bureau Fundament</span>
       </div>
       <blockquote class="bio-quote">
-        &#8220;Na ruim 25 jaar ervaring in digitalisering en procesregie binnen grote organisaties richt ik mij op complexe vastgoedvraagstukken. Ik geloof dat funderingsproblematiek niet vraagt om nóg een rapport, maar om regie. Daarom begeleid ik makelaars, taxateurs en woningeigenaren van eerste risico tot compleet funderingsdossier.&#8221;
+        &#8220;Complexe vraagstukken tussen meerdere partijen organiseren is mijn vak &#8212; ruim 25 jaar lang, in digitalisering en procesregie binnen grote organisaties. Als makelaar en taxateur zie ik hoe funderingsdossiers tussen eigenaar, makelaar, taxateur en specialist blijven liggen. Niet omdat niemand wil handelen, maar omdat niemand verantwoordelijk is voor de regie. Die rol neem ik.&#8221;
       </blockquote>
     </div>
   </div>
@@ -852,6 +894,7 @@
       <li><span class="vinkje">&#10003;</span> Preventief, vóór verkoop &#8212; zodra de funderingsinformatie in het voortraject een verhoogd risico laat zien.</li>
       <li><span class="vinkje">&#10003;</span> Zodra u weet of vermoedt dat een woning in een funderingsrisicogebied staat.</li>
       <li><span class="vinkje">&#10003;</span> Zodra de taxateur een D&#8211; of E&#8211;score afgeeft en het dossier vastloopt.</li>
+      <li><span class="vinkje">&#10003;</span> Zodra een hypotheekadviseur of geldverstrekker vragen stelt over de funderingsscore.</li>
     </ul>
   </div>
 </section>
@@ -859,7 +902,7 @@
 <section class="cta-finaal">
   <div class="wrap">
     <div class="kop-eyebrow label">Zit u vast met een dossier?</div>
-    <h2>Bel voor een vrijblijvend advies over uw funderingsvraagstuk.</h2>
+    <h2>Bel voor een vrijblijvend advies over uw funderingsvraagstuk</h2>
     <p class="lede">Binnen één gesprek weet u welke vervolgstap logisch is &#8212; en wie die voor u uit handen neemt.</p>
     <div class="cta-knoppen">
       <a class="btn-call" href="tel:+31294779999">
