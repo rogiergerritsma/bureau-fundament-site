@@ -6,7 +6,7 @@
 <title>Bureau Fundament — Regie bij funderingsvraagstukken</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
     --grond-donker:#1c1a17;
@@ -27,7 +27,7 @@
   html{scroll-behavior:smooth;}
 
   body{
-    font-family:'IBM Plex Sans', sans-serif;
+    font-family:'Inter', sans-serif;
     color:var(--inkt);
     background:var(--beton-licht);
     line-height:1.5;
@@ -44,7 +44,7 @@
   .label{
     font-family:'IBM Plex Mono', monospace;
     font-size:0.72rem;
-    letter-spacing:0.14em;
+    letter-spacing:0.22em;
     text-transform:uppercase;
     font-weight:500;
   }
@@ -83,7 +83,8 @@
 
   .hero-inner{
     position:relative;
-    padding:56px 0 64px;
+    padding-top:56px;
+    padding-bottom:64px;
   }
 
   .brandbar{
@@ -100,7 +101,22 @@
     letter-spacing:-0.01em;
   }
 
-  .brand span{color:var(--code-amber);}
+  .brand{display:flex; flex-direction:column; line-height:1;}
+  .brand-bureau{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    font-weight:500;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--beton);
+    opacity:0.75;
+    margin-bottom:6px;
+  }
+  .brand-naam{color:var(--code-amber);}
+
+  .vinkje svg, .vink svg{width:18px; height:18px; display:block;}
+  .check-lijst .vinkje{color:var(--code-groen); flex-shrink:0;}
+  .puntenlijst .vinkje{padding-top:2px;}
 
   .brandbar .tel-mini{
     font-family:'IBM Plex Mono', monospace;
@@ -653,7 +669,7 @@
 <header class="hero">
   <div class="wrap hero-inner">
     <div class="brandbar">
-      <div class="brand">Bureau <span>Fundament</span></div>
+      <div class="brand" aria-label="Bureau Fundament"><span class="brand-bureau">Bureau</span><span class="brand-naam">Fundament</span></div>
       <a class="tel-mini" href="tel:+31294779999">0294 - 779999</a>
     </div>
 
@@ -700,11 +716,11 @@
     <div class="check-kaart">
       <h2 class="check-kop">Heeft u een woning met:</h2>
       <ul class="check-lijst">
-        <li>&#9989; funderingscode D</li>
-        <li>&#9989; funderingscode E</li>
-        <li>&#9989; een QuickScan-uitslag die vragen oproept</li>
-        <li>&#9989; onzekerheid bij koper of bank</li>
-        <li>&#9989; een verkoop in een funderingsrisicogebied</li>
+        <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>funderingscode D</li>
+        <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>funderingscode E</li>
+        <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>een QuickScan-uitslag die vragen oproept</li>
+        <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>onzekerheid bij koper of bank</li>
+        <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>een verkoop in een funderingsrisicogebied</li>
       </ul>
       <p class="check-actie">Bel of app direct.</p>
       <div class="cta-knoppen">
@@ -725,11 +741,11 @@
   <div class="wrap">
     <h2>Waarom Bureau Fundament?</h2>
     <div class="kort-lijst">
-      <div class="kort-item"><span class="vink">&#10004;</span> Onafhankelijk</div>
-      <div class="kort-item"><span class="vink">&#10004;</span> Geen belang bij herstel</div>
-      <div class="kort-item"><span class="vink">&#10004;</span> Eén aanspreekpunt</div>
-      <div class="kort-item"><span class="vink">&#10004;</span> Onafhankelijk netwerk van specialisten</div>
-      <div class="kort-item"><span class="vink">&#10004;</span> Snelle opvolging</div>
+      <div class="kort-item"><span class="vink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Onafhankelijk</div>
+      <div class="kort-item"><span class="vink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Geen belang bij herstel</div>
+      <div class="kort-item"><span class="vink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Eén aanspreekpunt</div>
+      <div class="kort-item"><span class="vink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Onafhankelijk netwerk van specialisten</div>
+      <div class="kort-item"><span class="vink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Snelle opvolging</div>
     </div>
   </div>
 </section>
@@ -805,9 +821,9 @@
     <h2>Funderingscheck vóór verkoop</h2>
     <p class="intro-tekst">Voorkom dat het funderingsvraagstuk pas begint nadat de koopovereenkomst is getekend.</p>
     <ul class="puntenlijst">
-      <li><span class="vinkje">&#10003;</span> Wij beoordelen de funderingsinformatie voordat de woning online komt.</li>
-      <li><span class="vinkje">&#10003;</span> Is aanvullend onderzoek nodig, dan regelen we dat ruim vóór de eerste bezichtiging.</li>
-      <li><span class="vinkje">&#10003;</span> U start de verkoop met een dossier dat klaarligt voor koper, taxateur en financier.</li>
+      <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Wij beoordelen de funderingsinformatie voordat de woning online komt.</li>
+      <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Is aanvullend onderzoek nodig, dan regelen we dat ruim vóór de eerste bezichtiging.</li>
+      <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> U start de verkoop met een dossier dat klaarligt voor koper, taxateur en financier.</li>
     </ul>
     <div class="cta-knoppen">
       <a class="btn-call" href="tel:+31294779999">
@@ -855,11 +871,11 @@
         <div class="kop-eyebrow label">Waarom onafhankelijk</div>
         <h2>Geen belang bij herstel, wel bij een dossier dat klopt</h2>
         <ul class="puntenlijst">
-          <li><span class="vinkje">&#10003;</span> Geen belang bij een duurdere oplossing dan nodig.</li>
-          <li><span class="vinkje">&#10003;</span> Eén regisseur voor alle partijen aan het dossier &#8212; makelaar, taxateur, hypotheekadviseur, koper en verkoper.</li>
-          <li><span class="vinkje">&#10003;</span> Bureau Fundament voert zelf geen funderingsonderzoek of herstel uit. Daardoor hebben wij geen financieel belang bij de uitkomst van het onderzoek of de gekozen oplossing.</li>
-          <li><span class="vinkje">&#10003;</span> Een onafhankelijk netwerk van constructeurs, funderingsspecialisten en onderzoeksbureaus.</li>
-          <li><span class="vinkje">&#10003;</span> Meerdere succesvolle funderingsdossiers gerealiseerd in de regio Abcoude.</li>
+          <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Geen belang bij een duurdere oplossing dan nodig.</li>
+          <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Eén regisseur voor alle partijen aan het dossier &#8212; makelaar, taxateur, hypotheekadviseur, koper en verkoper.</li>
+          <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Bureau Fundament voert zelf geen funderingsonderzoek of herstel uit. Daardoor hebben wij geen financieel belang bij de uitkomst van het onderzoek of de gekozen oplossing.</li>
+          <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Een onafhankelijk netwerk van constructeurs, funderingsspecialisten en onderzoeksbureaus.</li>
+          <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Meerdere succesvolle funderingsdossiers gerealiseerd in de regio Abcoude.</li>
         </ul>
       </div>
       <div class="citaatblok">
@@ -891,10 +907,10 @@
     <h2>Wanneer schakelt u ons in?</h2>
     <p class="intro-tekst">Funderingsinformatie komt steeds eerder in het koopproces op tafel. Hoe eerder u ons inschakelt, hoe meer ruimte om de deal overeind te houden.</p>
     <ul class="puntenlijst">
-      <li><span class="vinkje">&#10003;</span> Preventief, vóór verkoop &#8212; zodra de funderingsinformatie in het voortraject een verhoogd risico laat zien.</li>
-      <li><span class="vinkje">&#10003;</span> Zodra u weet of vermoedt dat een woning in een funderingsrisicogebied staat.</li>
-      <li><span class="vinkje">&#10003;</span> Zodra de taxateur een D&#8211; of E&#8211;score afgeeft en het dossier vastloopt.</li>
-      <li><span class="vinkje">&#10003;</span> Zodra een hypotheekadviseur of geldverstrekker vragen stelt over de funderingsscore.</li>
+      <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Preventief, vóór verkoop &#8212; zodra de funderingsinformatie in het voortraject een verhoogd risico laat zien.</li>
+      <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Zodra u weet of vermoedt dat een woning in een funderingsrisicogebied staat.</li>
+      <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Zodra de taxateur een D&#8211; of E&#8211;score afgeeft en het dossier vastloopt.</li>
+      <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Zodra een hypotheekadviseur of geldverstrekker vragen stelt over de funderingsscore.</li>
     </ul>
   </div>
 </section>
