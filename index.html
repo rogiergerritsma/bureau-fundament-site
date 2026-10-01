@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+<!-- Google tag (gtag.js) — wordt pas geladen na toestemming via de cookiebalk -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  var GA_ID = 'G-FLDM7SHN79';
+  window.gaGeladen = false;
+  function laadAnalytics(){
+    if (window.gaGeladen) return;
+    window.gaGeladen = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', GA_ID, {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
+    });
+  }
+  try { if (localStorage.getItem('bf_cookiekeuze') === 'ja') laadAnalytics(); } catch (e) {}
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bureau Fundament — Regie bij funderingsvraagstukken</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
     --grond-donker:#1c1a17;
@@ -27,7 +48,7 @@
   html{scroll-behavior:smooth;}
 
   body{
-    font-family:'Inter', sans-serif;
+    font-family:'IBM Plex Sans', sans-serif;
     color:var(--inkt);
     background:var(--beton-licht);
     line-height:1.5;
@@ -44,7 +65,7 @@
   .label{
     font-family:'IBM Plex Mono', monospace;
     font-size:0.72rem;
-    letter-spacing:0.22em;
+    letter-spacing:0.14em;
     text-transform:uppercase;
     font-weight:500;
   }
@@ -83,8 +104,7 @@
 
   .hero-inner{
     position:relative;
-    padding-top:56px;
-    padding-bottom:64px;
+    padding:56px 0 64px;
   }
 
   .brandbar{
@@ -101,22 +121,7 @@
     letter-spacing:-0.01em;
   }
 
-  .brand{display:flex; flex-direction:column; line-height:1;}
-  .brand-bureau{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.68rem;
-    font-weight:500;
-    letter-spacing:0.22em;
-    text-transform:uppercase;
-    color:var(--beton);
-    opacity:0.75;
-    margin-bottom:6px;
-  }
-  .brand-naam{color:var(--code-amber);}
-
-  .vinkje svg, .vink svg{width:18px; height:18px; display:block;}
-  .check-lijst .vinkje{color:var(--code-groen); flex-shrink:0;}
-  .puntenlijst .vinkje{padding-top:2px;}
+  .brand span{color:var(--code-amber);}
 
   .brandbar .tel-mini{
     font-family:'IBM Plex Mono', monospace;
@@ -361,7 +366,7 @@
 
   .doelgroep-grid{
     display:grid;
-    grid-template-columns:repeat(2, 1fr);
+    grid-template-columns:repeat(3, 1fr);
     gap:1px;
     background:rgba(43,40,34,0.14);
     border:1px solid rgba(43,40,34,0.14);
@@ -378,14 +383,6 @@
   .doelgroep-card h3{font-size:1.08rem; margin-bottom:10px;}
 
   .doelgroep-card p{color:var(--inkt-zacht); font-size:0.93rem;}
-
-  /* preventief */
-
-  .sectie-preventief{background:var(--grond-donker); color:var(--beton-licht);}
-  .sectie-preventief .kop-eyebrow{color:var(--code-amber);}
-  .sectie-preventief .intro-tekst{color:var(--beton);}
-  .sectie-preventief .puntenlijst li{color:var(--beton); border-bottom-color:rgba(233,228,218,0.14);}
-  .sectie-preventief .cta-knoppen{justify-content:flex-start; margin-top:30px;}
 
   /* onafhankelijk */
 
@@ -653,6 +650,60 @@
 
   .sticky-call svg{width:17px;height:17px;flex-shrink:0;}
 
+  /* cookiebalk (geen muur: pagina blijft gewoon bruikbaar) */
+
+  .cookiebalk{
+    position:fixed;
+    left:16px;
+    bottom:16px;
+    max-width:400px;
+    background:var(--grond-donker);
+    color:var(--beton-licht);
+    border:1px solid rgba(233,228,218,0.18);
+    border-radius:10px;
+    padding:18px 20px;
+    z-index:60;
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    font-size:0.9rem;
+    transition:bottom 0.25s ease;
+  }
+
+  .cookiebalk[hidden]{display:none;}
+
+  .cookiebalk p{margin-bottom:14px; color:var(--beton);}
+
+  .cookiebalk p a{text-decoration:underline; text-underline-offset:2px; color:var(--beton-licht);}
+
+  .cookiebalk-knoppen{display:flex; gap:10px;}
+
+  .cookiebalk button{
+    flex:1;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:0.95rem;
+    padding:11px 14px;
+    border-radius:6px;
+    cursor:pointer;
+  }
+
+  .cookiebalk .ck-ja{background:var(--code-amber); color:var(--grond-donker); border:1px solid var(--code-amber);}
+
+  .cookiebalk .ck-nee{background:transparent; color:var(--beton-licht); border:1px solid rgba(233,228,218,0.4);}
+
+  .footer-links{display:flex; gap:18px; flex-wrap:wrap;}
+
+  .footer-links a, .footer-links button{
+    color:inherit;
+    font:inherit;
+    background:none;
+    border:0;
+    padding:0;
+    cursor:pointer;
+    text-decoration:underline;
+    text-decoration-color:rgba(233,228,218,0.4);
+    text-underline-offset:2px;
+  }
+
   @media (max-width: 780px){
     .probleem-grid{grid-template-columns:1fr; gap:32px;}
     .doelgroep-grid{grid-template-columns:1fr;}
@@ -661,6 +712,8 @@
     section{padding:56px 0;}
     .sticky-call{display:flex;}
     body{padding-bottom:64px;}
+    .cookiebalk{left:10px; right:10px; bottom:10px; max-width:none;}
+    .sticky-call.tonen ~ .cookiebalk{bottom:74px;}
   }
 </style>
 </head>
@@ -668,16 +721,16 @@
 
 <header class="hero">
   <div class="wrap hero-inner">
-    <div class="brandbar">
-      <div class="brand" aria-label="Bureau Fundament"><span class="brand-bureau">Bureau</span><span class="brand-naam">Fundament</span></div>
+    <div class="brandbar" data-locatie="header">
+      <div class="brand">Bureau <span>Fundament</span></div>
       <a class="tel-mini" href="tel:+31294779999">0294 - 779999</a>
     </div>
 
     <div class="eyebrow label">Onafhankelijke regie bij funderingsvraagstukken</div>
-    <h1>Funderingscode D of E?<br>Wij nemen de regie, zodat uw vastgoedtransactie niet vastloopt</h1>
-    <p class="lede">Van eerste risico-inschatting tot compleet funderingsdossier. Sinds 1 april 2026 is de funderingsrisicoscore standaard onderdeel van het gevalideerde taxatierapport. Bij code D of E moet de taxateur onderbouwen of aanvullend onderzoek nodig is. Bureau Fundament bouwt het dossier waarmee uw transactie verder kan &#8212; en zorgt dat iedereen weet wat er moet gebeuren, en wanneer.</p>
+    <h1>Funderingscode D of E?<br>Wij nemen de regie, zodat uw vastgoedtransactie niet vastloopt.</h1>
+    <p class="lede">Sinds 1 april 2026 is de funderingsrisicoscore verplicht onderdeel van elk taxatierapport. Bij code D of E rondt de taxateur pas af na aanvullend onderzoek &#8212; en begint voor u het echte werk. Bureau Fundament neemt de regie over, zodat uw dossier én transactie niet vastlopen.</p>
 
-    <div class="cta-row">
+    <div class="cta-row" data-locatie="hero">
       <a class="btn-call" href="tel:+31294779999">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         Bel voor advies
@@ -695,7 +748,7 @@
 
     <div class="schaal">
       <div class="schaal-top">
-        <span class="label">Standaard in het gevalideerde taxatierapport sinds 1 april 2026</span>
+        <span class="label">Verplicht in het taxatierapport sinds 1 april 2026</span>
       </div>
       <div class="schaal-bar">
         <div class="schaal-seg seg-a">A</div>
@@ -713,14 +766,13 @@
 
 <section class="sectie-check sectie-licht">
   <div class="wrap">
-    <div class="check-kaart">
+    <div class="check-kaart" data-locatie="checklist">
       <h2 class="check-kop">Heeft u een woning met:</h2>
       <ul class="check-lijst">
-        <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>funderingscode D</li>
-        <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>funderingscode E</li>
-        <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>een QuickScan-uitslag die vragen oproept</li>
-        <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>onzekerheid bij koper of bank</li>
-        <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>een verkoop in een funderingsrisicogebied</li>
+        <li>&#9989; funderingscode D</li>
+        <li>&#9989; funderingscode E</li>
+        <li>&#9989; een KCAF QuickScan</li>
+        <li>&#9989; onzekerheid bij koper of bank</li>
       </ul>
       <p class="check-actie">Bel of app direct.</p>
       <div class="cta-knoppen">
@@ -741,11 +793,11 @@
   <div class="wrap">
     <h2>Waarom Bureau Fundament?</h2>
     <div class="kort-lijst">
-      <div class="kort-item"><span class="vink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Onafhankelijk</div>
-      <div class="kort-item"><span class="vink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Geen belang bij herstel</div>
-      <div class="kort-item"><span class="vink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Eén aanspreekpunt</div>
-      <div class="kort-item"><span class="vink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Onafhankelijk netwerk van specialisten</div>
-      <div class="kort-item"><span class="vink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Snelle opvolging</div>
+      <div class="kort-item"><span class="vink">&#10004;</span> Onafhankelijk</div>
+      <div class="kort-item"><span class="vink">&#10004;</span> Geen belang bij herstel</div>
+      <div class="kort-item"><span class="vink">&#10004;</span> Eén aanspreekpunt</div>
+      <div class="kort-item"><span class="vink">&#10004;</span> Landelijk netwerk</div>
+      <div class="kort-item"><span class="vink">&#10004;</span> Snelle opvolging</div>
     </div>
   </div>
 </section>
@@ -753,13 +805,12 @@
 <section class="sectie-licht">
   <div class="wrap">
     <div class="kop-eyebrow label">Het probleem</div>
-    <h2>Code D of E? Dan begint het traject pas</h2>
+    <h2>Een slechte quickscan is het begin van een proces, niet het einde ervan.</h2>
 
     <div class="probleem-grid">
       <div class="probleem-tekst">
-        <p>De funderingsscore is bedoeld om risico in kaart te brengen &#8212; niet om een verkoop stil te leggen. Maar in de praktijk gebeurt dat wel. Sinds 1 april 2026 is funderingsrisico een vast onderdeel van het taxatierapport. Daardoor komt funderingsinformatie bij steeds meer aan- en verkooptrajecten nadrukkelijk op tafel &#8212; steeds vaker al in het voortraject, maar ook nog regelmatig pas nadat koper en verkoper het al eens zijn.</p>
-        <p>Een D of E betekent niet automatisch nieuw onderzoek. Eerst de vraag: welke informatie is er al, en is die voldoende? Pas daarna volgt, als het nodig is, aanvullend onderzoek.</p>
-        <p>Voor de makelaar is dit zelden het eigen vakgebied, terwijl het risico wél voor uw rekening komt: een hypotheekverstrekker kan de financiering weigeren of verlagen, zeker zonder financieringsvoorbehoud. <strong>Wie bepaalt de vervolgstap? Wat moet er in het dossier? En wie bewaakt dat de deal niet alsnog klapt terwijl de klok tikt?</strong></p>
+        <p>De quickscan is bedoeld om risico in kaart te brengen &#8212; niet om een verkoop stil te leggen. Maar in de praktijk gebeurt precies dat. Sinds de funderingsscore verplicht in het taxatierapport staat, komt dit bij vrijwel elke transactie met een ouder pand op tafel &#8212; vaak pas nadat koper en verkoper het al eens zijn.</p>
+        <p>Voor de makelaar is dit zelden het eigen vakgebied, terwijl het risico wél voor uw rekening komt: een hypotheekverstrekker kan de financiering weigeren of verlagen, zeker zonder financieringsvoorbehoud. <strong>Wie voert het vervolgonderzoek uit? Wat moet er in het dossier? En wie bewaakt dat de deal niet alsnog klapt terwijl de klok tikt?</strong></p>
       </div>
       <div class="vastgelopen">
         <span class="label">Herkenbaar</span>
@@ -772,64 +823,38 @@
 <section class="sectie-beton">
   <div class="wrap">
     <div class="kop-eyebrow label">De regie</div>
-    <h2>Wij bouwen het dossier waarmee uw transactie verder kan</h2>
-    <p class="intro-tekst">Bureau Fundament voert zelf geen onderzoek of herstel uit. Wij organiseren de informatieketen: van risicoscore tot een compleet funderingsdossier voor taxateur, financier, koper en verkoper.</p>
+    <h2>Eén aanspreekpunt, van code tot contract.</h2>
+    <p class="intro-tekst">Bureau Fundament begeleidt het volledige traject na een slechte quickscan &#8212; onafhankelijk, en zonder eigen belang bij het herstel.</p>
 
     <div class="proces-lijst">
       <div class="stap">
         <div class="stap-nr">01</div>
         <div>
-          <h3>Dossieranalyse</h3>
-          <p>Wat staat er in het funderingsrisicorapport, welke informatie is er al &#8212; archief, eerdere onderzoeken, uitgevoerd herstel &#8212; en wat betekent dit voor het verkoop- of aankooptraject?</p>
+          <h3>Risicoanalyse</h3>
+          <p>Wat blijkt precies uit de code, hoe urgent is het, en wat betekent dit voor het verkoop&#8211; of aankooptraject.</p>
         </div>
       </div>
       <div class="stap">
         <div class="stap-nr">02</div>
         <div>
-          <h3>Vervolgstap bepalen</h3>
-          <p>Is de bestaande informatie voldoende, of is aanvullend onderzoek nodig? Niet elk dossier vraagt om nieuw onderzoek &#8212; en juist daar loopt het vaak vast.</p>
+          <h3>De juiste partijen</h3>
+          <p>Niet elk dossier vraagt om nieuw onderzoek &#8212; dat is vaak juist waar het vastloopt. Wij brengen de juiste specialisten in stelling. Jij hebt het probleem, wij regisseren de oplossing.</p>
         </div>
       </div>
       <div class="stap">
         <div class="stap-nr">03</div>
         <div>
-          <h3>Specialist inschakelen en begeleiden</h3>
-          <p>Wij schakelen de juiste onafhankelijke deskundige in en bewaken opdracht, planning en oplevering.</p>
+          <h3>Funderingsdossier</h3>
+          <p>Eén compleet, overzichtelijk dossier &#8212; samengesteld uit de rapportages van de betrokken specialisten, bruikbaar voor koper, verkoper, taxateur en financier.</p>
         </div>
       </div>
       <div class="stap">
         <div class="stap-nr">04</div>
         <div>
-          <h3>Funderingsdossier samenstellen</h3>
-          <p>Alle relevante informatie in één helder dossier &#8212; bruikbaar voor koper, verkoper, taxateur en financier.</p>
+          <h3>Verantwoorde transactie</h3>
+          <p>Verkoop of aankoop, met een dossier dat compleet en op orde is.</p>
         </div>
       </div>
-      <div class="stap">
-        <div class="stap-nr">05</div>
-        <div>
-          <h3>Afstemming tot aan de transactie</h3>
-          <p>Makelaar, taxateur, eigenaar, koper en hypotheekadviseur weten waar ze aan toe zijn, zodat de transactie verder kan.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sectie-preventief">
-  <div class="wrap">
-    <div class="kop-eyebrow label">Vóór de verkoop</div>
-    <h2>Funderingscheck vóór verkoop</h2>
-    <p class="intro-tekst">Voorkom dat het funderingsvraagstuk pas begint nadat de koopovereenkomst is getekend.</p>
-    <ul class="puntenlijst">
-      <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Wij beoordelen de funderingsinformatie voordat de woning online komt.</li>
-      <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Is aanvullend onderzoek nodig, dan regelen we dat ruim vóór de eerste bezichtiging.</li>
-      <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> U start de verkoop met een dossier dat klaarligt voor koper, taxateur en financier.</li>
-    </ul>
-    <div class="cta-knoppen">
-      <a class="btn-call" href="tel:+31294779999">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Check aanvragen
-      </a>
     </div>
   </div>
 </section>
@@ -837,7 +862,7 @@
 <section class="sectie-licht">
   <div class="wrap">
     <div class="kop-eyebrow label">Voor wie</div>
-    <h2>Bureau Fundament werkt voor iedereen aan tafel bij het dossier</h2>
+    <h2>Bureau Fundament werkt voor iedereen aan tafel bij het dossier.</h2>
 
     <div class="doelgroep-grid">
       <div class="doelgroep-card">
@@ -848,12 +873,7 @@
       <div class="doelgroep-card">
         <span class="label">Taxateurs</span>
         <h3>Onderbouwing voor de taxatie</h3>
-        <p>Een dossier dat aanvullende onderbouwing vraagt? Wij organiseren het vervolg, zodat de informatie er ligt voordat u rapporteert.</p>
-      </div>
-      <div class="doelgroep-card">
-        <span class="label">Hypotheekadviseurs</span>
-        <h3>Financiering met funderingsrisico</h3>
-        <p>Speelt de funderingsscore een rol in het financieringsdossier? Wij brengen de informatie bijeen die de geldverstrekker nodig heeft om het dossier te beoordelen.</p>
+        <p>Een taxatie op een woning met funderingsrisico vraagt om een dossier dat standhoudt. Wij zorgen dat dat er ligt, voordat u hoeft te rapporteren.</p>
       </div>
       <div class="doelgroep-card">
         <span class="label">Woningeigenaren</span>
@@ -869,18 +889,17 @@
     <div class="onafhankelijk">
       <div>
         <div class="kop-eyebrow label">Waarom onafhankelijk</div>
-        <h2>Geen belang bij herstel, wel bij een dossier dat klopt</h2>
+        <h2>Geen belang bij herstel. Wel belang bij een dossier dat klopt.</h2>
         <ul class="puntenlijst">
-          <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Geen belang bij een duurdere oplossing dan nodig.</li>
-          <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Eén regisseur voor alle partijen aan het dossier &#8212; makelaar, taxateur, hypotheekadviseur, koper en verkoper.</li>
-          <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Bureau Fundament voert zelf geen funderingsonderzoek of herstel uit. Daardoor hebben wij geen financieel belang bij de uitkomst van het onderzoek of de gekozen oplossing.</li>
-          <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Een onafhankelijk netwerk van constructeurs, funderingsspecialisten en onderzoeksbureaus.</li>
-          <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Meerdere succesvolle funderingsdossiers gerealiseerd in de regio Abcoude.</li>
+          <li><span class="vinkje">&#10003;</span> Geen belang bij een duurdere oplossing dan nodig.</li>
+          <li><span class="vinkje">&#10003;</span> Eén regisseur voor alle partijen aan het dossier &#8212; makelaar, taxateur, koper en verkoper.</li>
+          <li><span class="vinkje">&#10003;</span> Bureau Fundament voert zelf geen onderzoeken of herstel uit, maar heeft een groot netwerk van specialisten.</li>
+          <li><span class="vinkje">&#10003;</span> Meerdere succesvolle funderingsdossiers gerealiseerd in de regio Abcoude.</li>
         </ul>
       </div>
       <div class="citaatblok">
         <span class="label">Bureau Fundament</span>
-        <p>Wij verkopen geen funderingsonderzoek. Wij bouwen het funderingsdossier waarmee een vastgoedtransactie verder kan.</p>
+        <p>Regie bij complexe vastgoedvraagstukken. Wij nemen het funderingstraject over &#8212; zodat u weer verder kunt met de verkoop.</p>
       </div>
     </div>
   </div>
@@ -895,7 +914,7 @@
         <span class="label">Oprichter Bureau Fundament</span>
       </div>
       <blockquote class="bio-quote">
-        &#8220;Complexe vraagstukken tussen meerdere partijen organiseren is mijn vak &#8212; ruim 25 jaar lang, in digitalisering en procesregie binnen grote organisaties. Als makelaar en taxateur zie ik hoe funderingsdossiers tussen eigenaar, makelaar, taxateur en specialist blijven liggen. Niet omdat niemand wil handelen, maar omdat niemand verantwoordelijk is voor de regie. Die rol neem ik.&#8221;
+        &#8220;Na ruim 25 jaar ervaring in digitalisering en procesregie binnen grote organisaties richt ik mij op complexe vastgoedvraagstukken. Ik geloof dat funderingsproblematiek niet vraagt om nóg een rapport, maar om regie. Daarom begeleid ik makelaars, taxateurs en woningeigenaren van eerste risico tot compleet funderingsdossier.&#8221;
       </blockquote>
     </div>
   </div>
@@ -905,20 +924,19 @@
   <div class="wrap">
     <div class="kop-eyebrow label">Voor de makelaar</div>
     <h2>Wanneer schakelt u ons in?</h2>
-    <p class="intro-tekst">Funderingsinformatie komt steeds eerder in het koopproces op tafel. Hoe eerder u ons inschakelt, hoe meer ruimte om de deal overeind te houden.</p>
+    <p class="intro-tekst">Hoe eerder in het traject, hoe meer ruimte om de deal overeind te houden.</p>
     <ul class="puntenlijst">
-      <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Preventief, vóór verkoop &#8212; zodra de funderingsinformatie in het voortraject een verhoogd risico laat zien.</li>
-      <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Zodra u weet of vermoedt dat een woning in een funderingsrisicogebied staat.</li>
-      <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Zodra de taxateur een D&#8211; of E&#8211;score afgeeft en het dossier vastloopt.</li>
-      <li><span class="vinkje"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span> Zodra een hypotheekadviseur of geldverstrekker vragen stelt over de funderingsscore.</li>
+      <li><span class="vinkje">&#10003;</span> Zodra u weet of vermoedt dat een woning in een funderingsrisicogebied staat.</li>
+      <li><span class="vinkje">&#10003;</span> Preventief, vóór verkoop, om verrassingen bij de taxatie te voorkomen.</li>
+      <li><span class="vinkje">&#10003;</span> Zodra de taxateur een D&#8211; of E&#8211;score afgeeft en het dossier vastloopt.</li>
     </ul>
   </div>
 </section>
 
-<section class="cta-finaal">
+<section class="cta-finaal" data-locatie="afsluiter">
   <div class="wrap">
     <div class="kop-eyebrow label">Zit u vast met een dossier?</div>
-    <h2>Bel voor een vrijblijvend advies over uw funderingsvraagstuk</h2>
+    <h2>Bel voor een vrijblijvend advies over uw funderingsvraagstuk.</h2>
     <p class="lede">Binnen één gesprek weet u welke vervolgstap logisch is &#8212; en wie die voor u uit handen neemt.</p>
     <div class="cta-knoppen">
       <a class="btn-call" href="tel:+31294779999">
@@ -941,10 +959,14 @@
   </div>
   <div class="wrap">
     <span class="footer-initiatief">Een initiatief van <a href="https://bureau-wonen.nl" target="_blank" rel="noopener">Bureau Wonen</a> en <a href="https://bureaugerritsma.nl" target="_blank" rel="noopener">Bureau Gerritsma</a></span>
+    <span class="footer-links footer-initiatief">
+      <a href="privacy.html">Privacyverklaring</a>
+      <button type="button" id="cookieInstellingen">Cookie-instellingen</button>
+    </span>
   </div>
 </footer>
 
-<div class="sticky-call" id="stickyCall">
+<div class="sticky-call" id="stickyCall" data-locatie="sticky-mobiel">
   <a class="sticky-bel" href="tel:+31294779999">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     Bel nu
@@ -955,7 +977,73 @@
   </a>
 </div>
 
+<div class="cookiebalk" id="cookiebalk" role="region" aria-label="Cookiekeuze" hidden>
+  <p>Mogen we met Google Analytics meten hoe bezoekers deze site gebruiken? Zo zien we wat werkt. <a href="privacy.html">Privacyverklaring</a></p>
+  <div class="cookiebalk-knoppen">
+    <button type="button" class="ck-ja" data-keuze="ja">Prima</button>
+    <button type="button" class="ck-nee" data-keuze="nee">Liever niet</button>
+  </div>
+</div>
+
 <script>
+  /* ---------- cookiekeuze ---------- */
+  var balk = document.getElementById('cookiebalk');
+
+  function leesKeuze(){
+    try { return localStorage.getItem('bf_cookiekeuze'); } catch (e) { return null; }
+  }
+
+  function wisGaCookies(){
+    var host = location.hostname.replace(/^www\./, '');
+    document.cookie.split(';').forEach(function(c){
+      var naam = c.split('=')[0].trim();
+      if (naam.indexOf('_ga') === 0) {
+        ['', ';domain=' + host, ';domain=.' + host].forEach(function(d){
+          document.cookie = naam + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/' + d;
+        });
+      }
+    });
+  }
+
+  if (!leesKeuze()) balk.hidden = false;
+
+  balk.addEventListener('click', function(e){
+    var knop = e.target.closest('button[data-keuze]');
+    if (!knop) return;
+    var keuze = knop.getAttribute('data-keuze');
+    var wasGeladen = window.gaGeladen;
+    try { localStorage.setItem('bf_cookiekeuze', keuze); } catch (err) {}
+    balk.hidden = true;
+    if (keuze === 'ja') {
+      laadAnalytics();
+    } else {
+      wisGaCookies();
+      if (wasGeladen) location.reload();
+    }
+  });
+
+  document.getElementById('cookieInstellingen').addEventListener('click', function(){
+    balk.hidden = false;
+  });
+
+  /* ---------- conversie-events: bellen, WhatsApp, mail ---------- */
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href]');
+    if (!a || !window.gaGeladen) return;
+    var href = a.getAttribute('href');
+    var naam = null;
+    if (href.indexOf('tel:') === 0) naam = 'klik_bellen';
+    else if (href.indexOf('wa.me') > -1) naam = 'klik_whatsapp';
+    else if (href.indexOf('mailto:') === 0) naam = 'klik_email';
+    if (!naam) return;
+    var plek = a.closest('[data-locatie]');
+    gtag('event', naam, {
+      locatie: plek ? plek.getAttribute('data-locatie') : 'overig',
+      transport_type: 'beacon'
+    });
+  });
+
+  /* ---------- sticky mobiele call bar ---------- */
   var hero = document.querySelector('.hero');
   var sticky = document.getElementById('stickyCall');
   window.addEventListener('scroll', function(){
